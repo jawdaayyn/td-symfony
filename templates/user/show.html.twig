@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Age </th>
+      <th scope="col">Action </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{user.firstname}}</th>
+      <th scope="row">{{user.lastname}}</th>
+      <th scope="row">{{user.age}}</th>
+            <th scope="row">
+        <a class="btn btn-warning" href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('user_delete', {'id': user.id}) }}">Delete</a></th>
+
+    </tr>
+  </tbody>
+
+{% endblock %}

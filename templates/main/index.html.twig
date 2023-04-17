@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+  {% for article in articles %}
+
+<div class="card mt-3">
+
+  <div class="card-header">
+    {{article.title}}
+  </div>
+  <div class="card-body">
+  <div class="d-flex gap-2">
+    <p>{{article.user.lastname | first}}.{{article.user.firstname }}</p>
+    <p>{{article.createdAt | date("d/m/Y") }}</p>
+  </div>
+    <p>{{article.categories.name}}</p>
+   <blockquote class="blockquote mb-0">
+      <p>{{article.content}}</p>
+      <a class="btn btn-primary" href="{{ path('article_show', {'id': article.id}) }}">Show</a>
+      <a class="btn btn-success" href="{{ path('article_like', {'id': article.id}) }}">{{article.liked ? 'Like': 'Unlike'}}</a>
+
+    </blockquote>
+  </div>
+</div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
